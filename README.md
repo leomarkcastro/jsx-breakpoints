@@ -39,7 +39,7 @@ const useMediaQuery = (mediaQueryString: string) => {
 
 ## Sample
 
-![Sample](https://raw.githubusercontent.com/leomarkcastro/jsx-breakpoints/master/demo.gif)
+![Demo GIF](https://github.com/leomarkcastro/jsx-breakpoints/blob/main/demo.gif?raw=true)
 
 ```jsx
 import { JsxBreakpoint } from "jsx-breakpoints";
