@@ -2,15 +2,97 @@
 
 Component style breakpoints so that you won't have to create custom components to handle responsive design.
 
+I was working on a project and handling breakpoints via react hooks are bad as you'll have milliseconds (sometimes a whole second) of delay before the right element shows up on the screen. So I decided to create this package to handle breakpoints via html-css components.
+
 <!-- ![npm bundle size](https://img.shields.io/bundlephobia/min/jsx-breakpoints?style=flat-square)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@codifytools/jsx-breakpoints?style=flat-square)
 ![npm downloads](https://img.shields.io/npm/dt/leomarkcastro/jsx-breakpoints?style=flat-square)
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square) -->
 
-## Features
+## Basis
 
-- Import `<JsxBreakpoint>{children}</JsxBreakpoint>` component and use it to render components based on the screen size.
+This package is based on the breakpoints of [Tailwind CSS](https://tailwindcss.com/docs/breakpoints).
+
+- sm: 640px
+- md: 768px
+- lg: 1024px
+- xl: 1280px
+- 2xl: 1536px
+
+Note that this package doesn't use Tailwind's CSS declaration and contains its own media queries copies almost exactly from the tailwind css declarations.
+
+## Functions
+
+```jsx
+const JsxBreakpoint = (props: {
+  children: any,
+  start?: "sm" | "md" | "lg" | "xl" | "2xl",
+  end?: "sm" | "md" | "lg" | "xl" | "2xl",
+}) => {
+  // returns children if the screen size is within the range of start and end
+};
+
+const useMediaQuery = (mediaQueryString: string) => {
+  // returns true if the media query matches
+};
+```
+
+## Sample
+
+![Sample](https://raw.githubusercontent.com/leomarkcastro/jsx-breakpoints/master/demo.gif)
+
+```jsx
+import { JsxBreakpoint } from "jsx-breakpoints";
+
+const app = () => {
+  return (
+    <div>
+      <JsxBreakpoint start="sm" end="sm">
+        <p>Only on mobile</p>
+      </JsxBreakpoint>
+
+      <JsxBreakpoint start="md" end="md">
+        <p>Only on tablet</p>
+      </JsxBreakpoint>
+
+      <JsxBreakpoint start="lg" end="lg">
+        <p>Only on laptop</p>
+      </JsxBreakpoint>
+
+      <JsxBreakpoint start="xl" end="xl">
+        <p>Only on desktop</p>
+      </JsxBreakpoint>
+
+      <JsxBreakpoint start="2xl" end="2xl">
+        <p>Only on 2xl</p>
+      </JsxBreakpoint>
+
+      <br />
+
+      <JsxBreakpoint start="sm">
+        <p>On mobile and up</p>
+      </JsxBreakpoint>
+
+      <JsxBreakpoint start="md">
+        <p>On tablet and up</p>
+      </JsxBreakpoint>
+
+      <JsxBreakpoint start="lg">
+        <p>On laptop and up</p>
+      </JsxBreakpoint>
+
+      <JsxBreakpoint start="xl">
+        <p>On desktop and up</p>
+      </JsxBreakpoint>
+
+      <JsxBreakpoint start="2xl">
+        <p>On 2xl and up</p>
+      </JsxBreakpoint>
+    </div>
+  );
+};
+```
 
 ### License
 
-MIT license, Copyright (c) Juan Pablo Mejia Duque. For more information see `LICENSE`.
+MIT license, Copyright (c) Leo Mark Castro. For more information see `LICENSE`.
