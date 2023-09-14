@@ -1,14 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import React from "react";
 
-export const useMediaQuery = (mediaQueryString) => {
-  const [targetReached, setTargetReached] = useState(false);
+const useMediaQuery = (mediaQueryString: string) => {
+  const [targetReached, setTargetReached] = React.useState(false);
 
-  const updateTarget = useCallback((e) => {
+  const updateTarget = React.useCallback((e: any) => {
     if (e.matches) setTargetReached(true);
     else setTargetReached(false);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const media = window.matchMedia(mediaQueryString);
     media.addEventListener("change", updateTarget);
 
@@ -20,3 +20,5 @@ export const useMediaQuery = (mediaQueryString) => {
 
   return targetReached;
 };
+
+export default useMediaQuery;

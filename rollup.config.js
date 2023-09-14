@@ -3,10 +3,11 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import terser from "@rollup/plugin-terser";
 import css from "rollup-plugin-import-css";
+import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
 
 export default {
-  input: "src/index.js",
+  input: "src/index.tsx",
   output: [
     { file: pkg.main, format: "cjs" },
     { file: pkg.module, format: "esm" },
@@ -19,6 +20,11 @@ export default {
     }),
     resolve(),
     commonjs(),
+    typescript({
+      tsconfig: "./tsconfig.json",
+      declaration: true,
+      declarationDir: "dist",
+    }),
     terser(),
     css(),
   ],

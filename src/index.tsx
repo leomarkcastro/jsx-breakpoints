@@ -1,22 +1,12 @@
-import React, { useState } from "react";
-import { useMediaQuery } from "./useMediaQuery";
+import React from "react";
+import useMediaQuery from "./useMediaQuery";
 import "./styles.css";
 
-/**
- * @param {Object}  props - JsxBreakpoint
- * @param {React.ReactNode}  props.children - React children
- * @param {"sm" | "md" | "lg" | "xl" | "2xl"}  props.start - Start breakpoint
- * @param {"sm" | "md" | "lg" | "xl" | "2xl"}  props.end - End breakpoint
- * @returns {React.ReactNode} This is the result
- */
-const JsxBreakpoint = (
-  props
-  //: {
-  // children: React.ReactNode,
-  // start?: "sm" | "md" | "lg" | "xl" | "2xl",
-  // end?: "sm" | "md" | "lg" | "xl" | "2xl",
-  // }
-) => {
+const JsxBreakpoint = (props: {
+  children: any;
+  start?: "sm" | "md" | "lg" | "xl" | "2xl";
+  end?: "sm" | "md" | "lg" | "xl" | "2xl";
+}) => {
   let className = "contents ";
   switch (props.start) {
     case "md":
@@ -59,4 +49,4 @@ const JsxBreakpoint = (
   return <div className={className}>{props.children}</div>;
 };
 
-export { JsxBreakpoint };
+export { JsxBreakpoint, useMediaQuery };
